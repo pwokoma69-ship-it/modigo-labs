@@ -1,10 +1,8 @@
-def find_common_elements(list1, list2):
-    common = []
-    for item in list1:
-        for value in list2:
-            if item == value:
-                if item not in common:
-                    common.append(item)
-    return common
-    # TODO: use for loops to find values present in both list1 and list2, with no duplicates
+def compare_hobbies(person1_hobbies, person2_hobbies):
+    return {
+        "shared": person1_hobbies & person2_hobbies,
+        "only_person1": person1_hobbies - person2_hobbies,
+        "only_person2": person2_hobbies - person1_hobbies
+    }
+    # TODO: use set operations to find shared, only_person1, and only_person2 hobbies
     pass

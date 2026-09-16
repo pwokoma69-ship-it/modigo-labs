@@ -1,11 +1,19 @@
-def has_conflict(meetings):
-    for i in range(len(meetings)):
-        start1, end1 = meetings[i]
-        for j in range(1 + i, len(meetings)):
-            start2, end2 = meetings[j]
-            if start1 < end2 and start2 < end1:
-                return True
-    return False
+def to_roman(number):
+    values = [
+        (1000, "M"), (900, "CM"), (500, "D"), (400, "CD"), (100, "C"), (90, "XC"), (50, "L"), (40, "XL"), (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")
+    ]
 
-    # TODO: return True if any two meetings overlap in time, False otherwise
-    pass
+    result = ""
+    remaining = number
+    for value, symbol in values:
+        while remaining >= value:
+            result += symbol
+            remaining -= value
+
+    return result
+
+
+# No starter code provided — write the full function yourself.
+# Function name: to_roman
+# Parameter: number (1 to 3999)
+# Must return: the Roman numeral as a string

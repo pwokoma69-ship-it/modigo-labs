@@ -1,11 +1,11 @@
-def dedupe_preserve_order(items):
-    total = []
-    for item in items:
-        if item not in total:
-            total.append(item)
-    return total
-
-
-    # TODO: use a set to track seen values while building a new list
-    # that preserves the original order of first appearances
+def has_conflict(meetings):
+    for p in range(len(meetings)):
+        start1, end1 = meetings[p]
+        for w in range(1 + p, len(meetings)):
+            start2, end2 = meetings[w]
+            
+            if start1 < end2 and start2 < end1:
+                return True
+    return False
+    # TODO: return True if any two meetings overlap in time, False otherwise
     pass

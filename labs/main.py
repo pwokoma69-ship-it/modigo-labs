@@ -1,19 +1,15 @@
-def to_roman(number):
-    values = [
-        (1000, "M"), (900, "CM"), (500, "D"), (400, "CD"), (100, "C"), (90, "XC"), (50, "L"), (40, "XL"), (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")
-    ]
-
-    result = ""
-    remaining = number
-    for value, symbol in values:
-        while remaining >= value:
-            result += symbol
-            remaining -= value
-
-    return result
-
-
-# No starter code provided — write the full function yourself.
-# Function name: to_roman
-# Parameter: number (1 to 3999)
-# Must return: the Roman numeral as a string
+def merge_intervals(intervals):
+    if not intervals:
+        return []
+    intervals = sorted(intervals, key=lambda interval: interval)
+    merged = [intervals[0]]
+    for start, end in intervals[1:]:
+        last_start, last_end = merged[-1]
+        if start <= last_end:
+            merged[-1] = (last_start, max(last_end, end))
+        else:
+            merged.append((start, end))
+    return merged
+    # TODO: merge overlapping or touching intervals into consolidated ranges,
+    # returned sorted by start value
+    pass

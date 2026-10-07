@@ -1,12 +1,15 @@
-def count_cheap_rides(fares, limit):
-    """
-    Counts how many fares in the list are strictly less than `limit`.
-    Returns the count as an integer.
-    """
-    count = 0  # TODO: this should start at zero — is this right?
+def filter_and_group(catalog, required_tags, excluded_tags):
+    result = {}
 
-    for fare in fares:
-        if fare < limit:  # TODO: check the condition — should this compare fare to limit?
-            count += 1  # TODO: this line doesn't actually do anything — fix it so count goes up by 1
+    for product in catalog:
+        tags = product["tags"]
+        if required_tags.issubset(tags) and tags.isdisjoint(excluded_tags):
+            category = product["category"]
+            result.setdefault(category, []).append(product["name"])
+    return result
+        
+        
 
-    return count  # TODO: make sure this returns the right variable
+    # TODO: filter `catalog` by required_tags (must have all) and excluded_tags
+    # (must have none), then group matching product names by category
+    pass

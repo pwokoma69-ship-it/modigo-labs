@@ -1,15 +1,16 @@
-def filter_and_group(catalog, required_tags, excluded_tags):
-    result = {}
-
-    for product in catalog:
-        tags = product["tags"]
-        if required_tags.issubset(tags) and tags.isdisjoint(excluded_tags):
-            category = product["category"]
-            result.setdefault(category, []).append(product["name"])
-    return result
-        
-        
-
-    # TODO: filter `catalog` by required_tags (must have all) and excluded_tags
-    # (must have none), then group matching product names by category
+def top_words(text, n):
+    if not text:
+        return []
+    
+    counts = {}
+    for word in text.split():
+        word = word.lower()
+        counts[word] = counts.get(word, 0) + 1
+    ranked = sorted(counts.items(), key=lambda item: (-item[1], item[0]))
+    return ranked[:n]
+    
+    
+    
+    # TODO: count word frequency (case-insensitive), then return the top `n`
+    # as (word, count) tuples sorted by count descending, ties broken alphabetically
     pass

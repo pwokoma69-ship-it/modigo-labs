@@ -1,15 +1,12 @@
-def merge_intervals(intervals):
-    if not intervals:
-        return []
-    intervals = sorted(intervals, key=lambda interval: interval)
-    merged = [intervals[0]]
-    for start, end in intervals[1:]:
-        last_start, last_end = merged[-1]
-        if start <= last_end:
-            merged[-1] = (last_start, max(last_end, end))
-        else:
-            merged.append((start, end))
-    return merged
-    # TODO: merge overlapping or touching intervals into consolidated ranges,
-    # returned sorted by start value
-    pass
+def count_cheap_rides(fares, limit):
+    """
+    Counts how many fares in the list are strictly less than `limit`.
+    Returns the count as an integer.
+    """
+    count = 0  # TODO: this should start at zero — is this right?
+
+    for fare in fares:
+        if fare < limit:  # TODO: check the condition — should this compare fare to limit?
+            count += 1  # TODO: this line doesn't actually do anything — fix it so count goes up by 1
+
+    return count  # TODO: make sure this returns the right variable
